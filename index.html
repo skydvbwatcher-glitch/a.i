@@ -7,7 +7,7 @@
     <title>all ai | one chat desk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600;12..96,75..100,700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       :root { --ink: #f2f5ed; --muted: #a1a8b3; --paper: #151820; --line: #303641; --lime: #d7ff58; --coral: #ff7a63; --violet: #a286f2; --sky: #78d5ed; }
@@ -48,7 +48,9 @@
       h1 { margin: 0; font-size: 18px; letter-spacing: -.5px; } .provider-header p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
       .open-link { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; color: #c4c9d1; border-radius: 5px; text-decoration: none; font-size: 11px; font-weight: 700; } .open-link:hover { background: #252a34; }
       .open-link i { width: 14px; }
-      .intro { margin: 33px 0 28px; max-width: 560px; font-size: clamp(25px, 3.1vw, 38px); line-height: 1.18; letter-spacing: -1.7px; font-weight: 800; }
+      .intro { display: flex; align-items: center; gap: 11px; margin: 33px 0 28px; max-width: 560px; font-family: 'Bricolage Grotesque', Manrope, sans-serif; font-size: clamp(22px, 2.5vw, 30px); line-height: 1.2; letter-spacing: 0; font-weight: 700; }
+      .family-avatar { position: relative; display: grid; place-items: center; flex: 0 0 32px; width: 32px; height: 32px; color: #ffe171; }
+      .family-avatar > i:first-child { width: 32px; height: 32px; stroke-width: 1.9; }.family-avatar .smile { position: absolute; width: 14px; height: 14px; color: #151820; stroke-width: 2.4; }
       .intro .accent { padding: 0 5px 2px; background: var(--lime); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
       .suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 38px; }
       .suggestion { padding: 9px 12px; color: #cbd0d8; border: 1px solid var(--line); border-radius: 99px; background: #1d222c; font-size: 12px; font-weight: 600; } .suggestion:hover { color: #151820; border-color: var(--lime); background: var(--lime); }
@@ -73,7 +75,7 @@
         <header><div class="crumb">Conversations <span>/</span> <span id="crumbName">DeepSeek</span></div><div class="header-actions"><button class="icon-button" title="Toggle display mode"><i data-lucide="panel-right"></i></button><button class="icon-button" title="Settings"><i data-lucide="sliders-horizontal"></i></button></div></header>
         <section class="conversation">
           <div class="provider-header"><div class="large-icon" id="largeIcon">DS</div><div><h1 id="providerName">DeepSeek</h1><p id="providerTagline">Reasoning-first AI assistant</p></div><a id="openProvider" class="open-link" href="https://chat.deepseek.com" target="_blank" rel="noreferrer"><span>Open original</span><i data-lucide="external-link"></i></a></div>
-          <div class="intro">Build For Radujkovic Family Only</div>
+          <div class="intro"><span>Build For Radujkovic Family Only</span><span class="family-avatar" role="img" aria-label="Smiling sun"><i data-lucide="sun"></i><i class="smile" data-lucide="smile"></i></span></div>
           <div class="suggestions" id="suggestions"></div>
           <div class="thread" id="thread"><article class="message assistant"><div class="avatar" id="assistantAvatar">DS</div><div class="bubble"><strong id="assistantName">DeepSeek</strong>Hello! Pick any platform from the left and keep your conversations organized in one calm place. What are we working on?</div></article></div>
         </section>
