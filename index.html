@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11141c" />
+    <title>all ai | one chat desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root { --ink: #f2f5ed; --muted: #a1a8b3; --paper: #151820; --line: #303641; --lime: #d7ff58; --coral: #ff7a63; --violet: #a286f2; --sky: #78d5ed; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: #0d0f14; font-family: Manrope, sans-serif; }
+      button, input { font: inherit; }
+      button { cursor: pointer; }
+      .app { display: grid; grid-template-columns: 292px minmax(0, 1fr); min-height: 100vh; }
+      aside { display: flex; flex-direction: column; padding: 24px 16px; background: #11141b; border-right: 1px solid var(--line); overflow: hidden; }
+      .brand { display: flex; align-items: center; gap: 9px; margin: 0 9px 28px; font-size: 20px; font-weight: 800; letter-spacing: -.8px; }
+      .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; background: var(--lime); color: #151820; border-radius: 8px; box-shadow: 0 5px 14px #d7ff5830; }
+      .brand-mark i { width: 18px; height: 18px; stroke-width: 2.4; }
+      .add-chat { display: flex; align-items: center; justify-content: center; gap: 9px; height: 43px; color: #151820; background: var(--lime); border: 0; border-radius: 7px; font-weight: 800; transition: transform .2s, background .2s; }
+      .add-chat:hover { background: #e4ff87; transform: translateY(-1px); }
+      .finder { position: relative; margin: 20px 0 13px; }
+      .finder i { position: absolute; top: 12px; left: 12px; width: 16px; color: var(--muted); }
+      .finder input { width: 100%; height: 40px; padding: 0 12px 0 36px; border: 1px solid var(--line); border-radius: 6px; outline: none; color: var(--ink); background: #1b1f28; font-size: 13px; }
+      .finder input:focus { border-color: var(--violet); background: #202530; }
+      .section-label { margin: 0 9px 9px; color: #8c8e96; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+      .providers { display: grid; gap: 3px; overflow-y: auto; padding-right: 3px; }
+      .provider { display: flex; align-items: center; gap: 11px; width: 100%; padding: 8px 9px; color: #c4c9d1; border: 0; border-radius: 6px; background: transparent; text-align: left; font-size: 13px; font-weight: 600; }
+      .provider:hover { background: #202530; }
+      .provider.active { color: #151820; background: var(--lime); }
+      .provider-icon { display: grid; place-items: center; flex: 0 0 25px; width: 25px; height: 25px; overflow: hidden; border-radius: 7px; color: #fff; font-size: 11px; font-weight: 800; }
+      .provider-icon img, .large-icon img, .avatar img { width: 72%; height: 72%; object-fit: contain; }
+      .logo-fallback { display: none; }.logo-fallback.visible { display: inline; }
+      .sidebar-footer { display: flex; align-items: center; justify-content: space-between; margin: 16px 8px 0; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+      .online { display: flex; align-items: center; gap: 6px; } .online b { width: 7px; height: 7px; border-radius: 50%; background: #8bc648; }
+      main { display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh; background: var(--paper); }
+      header { display: flex; align-items: center; justify-content: space-between; min-height: 77px; padding: 16px clamp(20px, 4vw, 58px); border-bottom: 1px solid var(--line); }
+      .crumb { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; } .crumb span { color: #9c9da3; font-weight: 400; }
+      .header-actions { display: flex; align-items: center; gap: 8px; }
+      .icon-button { display: grid; place-items: center; width: 35px; height: 35px; color: #c4c9d1; border: 1px solid var(--line); border-radius: 6px; background: #1c2029; } .icon-button:hover { background: #282e39; }
+      .icon-button i { width: 17px; }
+      .conversation { width: min(810px, calc(100% - 40px)); margin: 0 auto; padding: 47px 0 25px; }
+      .provider-header { display: flex; align-items: center; gap: 15px; padding-bottom: 29px; border-bottom: 1px solid var(--line); }
+      .large-icon { display: grid; place-items: center; width: 47px; height: 47px; overflow: hidden; border-radius: 13px; color: #fff; font-size: 18px; font-weight: 800; box-shadow: 0 8px 15px #00000012; }
+      h1 { margin: 0; font-size: 18px; letter-spacing: -.5px; } .provider-header p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+      .open-link { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; color: #c4c9d1; border-radius: 5px; text-decoration: none; font-size: 11px; font-weight: 700; } .open-link:hover { background: #252a34; }
+      .open-link i { width: 14px; }
+      .intro { margin: 33px 0 28px; max-width: 560px; font-size: clamp(25px, 3.1vw, 38px); line-height: 1.18; letter-spacing: -1.7px; font-weight: 800; }
+      .intro .accent { padding: 0 5px 2px; background: var(--lime); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+      .suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 38px; }
+      .suggestion { padding: 9px 12px; color: #cbd0d8; border: 1px solid var(--line); border-radius: 99px; background: #1d222c; font-size: 12px; font-weight: 600; } .suggestion:hover { color: #151820; border-color: var(--lime); background: var(--lime); }
+      .thread { display: grid; gap: 19px; }
+      .message { display: flex; gap: 12px; align-items: flex-start; }.avatar { display: grid; place-items: center; flex: 0 0 29px; width: 29px; height: 29px; border-radius: 8px; font-size: 11px; font-weight: 800; }
+      .assistant .avatar { color: #fff; overflow: hidden; }.user .avatar { background: #363d49; color: #dce0e5; }.bubble { padding-top: 4px; line-height: 1.65; font-size: 13px; }.bubble strong { display: block; margin-bottom: 3px; font-size: 11px; }.assistant .bubble { max-width: 650px; }.user { justify-content: flex-end; }.user .bubble { max-width: 70%; padding: 10px 13px; background: #242a34; border: 1px solid var(--line); border-radius: 8px; }
+      .composer-wrap { padding: 18px clamp(20px, 4vw, 58px) 24px; background: linear-gradient(transparent, var(--paper) 25%); }.composer { display: flex; align-items: flex-end; gap: 10px; width: min(810px, 100%); margin: 0 auto; padding: 8px 9px 8px 15px; border: 1px solid #39404c; border-radius: 9px; background: #202630; box-shadow: 0 8px 30px #00000035; }.composer input { flex: 1; height: 35px; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; }.send { display: grid; place-items: center; width: 35px; height: 35px; border: 0; border-radius: 6px; color: #151820; background: var(--lime); }.send:hover { background: #e4ff87; }.send i { width: 17px; }.fine-print { width: min(810px, 100%); margin: 8px auto 0; color: #7e8692; font-size: 10px; text-align: center; }
+      @media (max-width: 720px) { .app { grid-template-columns: 1fr; } aside { display: none; } header { min-height: 65px; } .conversation { width: min(100% - 32px, 810px); padding-top: 27px; } .intro { font-size: 29px; } .open-link span { display: none; } .composer-wrap { padding: 12px 16px 16px; } }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside>
+        <div class="brand"><div class="brand-mark"><i data-lucide="sparkles"></i></div>Smart A.I</div>
+        <button class="add-chat" id="newChat"><i data-lucide="plus"></i>New conversation</button>
+        <label class="finder"><i data-lucide="search"></i><input id="platformSearch" placeholder="Find a platform" aria-label="Find a platform" /></label>
+        <p class="section-label">Platforms <span id="platformCount"></span></p>
+        <div class="providers" id="providers"></div>
+        <div class="sidebar-footer"><span class="online"><b></b>All systems normal</span><span>v1.0</span></div>
+      </aside>
+      <main>
+        <header><div class="crumb">Conversations <span>/</span> <span id="crumbName">DeepSeek</span></div><div class="header-actions"><button class="icon-button" title="Toggle display mode"><i data-lucide="panel-right"></i></button><button class="icon-button" title="Settings"><i data-lucide="sliders-horizontal"></i></button></div></header>
+        <section class="conversation">
+          <div class="provider-header"><div class="large-icon" id="largeIcon">DS</div><div><h1 id="providerName">DeepSeek</h1><p id="providerTagline">Reasoning-first AI assistant</p></div><a id="openProvider" class="open-link" href="https://chat.deepseek.com" target="_blank" rel="noreferrer"><span>Open original</span><i data-lucide="external-link"></i></a></div>
+          <div class="intro">One desk for every shines.</div>
+          <div class="suggestions" id="suggestions"></div>
+          <div class="thread" id="thread"><article class="message assistant"><div class="avatar" id="assistantAvatar">DS</div><div class="bubble"><strong id="assistantName">DeepSeek</strong>Hello! Pick any platform from the left and keep your conversations organized in one calm place. What are we working on?</div></article></div>
+        </section>
+        <div class="composer-wrap"><form class="composer" id="chatForm"><input id="messageInput" autocomplete="off" placeholder="Message DeepSeek..." aria-label="Message the assistant" /><button class="send" aria-label="Send message"><i data-lucide="arrow-up"></i></button></form><p class="fine-print">A unified interface for your favorite AI platforms.</p></div>
+      </main>
+    </div>
+    <script>
+      const platforms = [
+        ['ChatGPT', 'GPT', '#111111', 'OpenAI\'s conversational AI', 'https://chatgpt.com'], ['DeepSeek', 'DS', '#3a71ed', 'Reasoning-first AI assistant', 'https://chat.deepseek.com'], ['Claude', 'C', '#d97742', 'Thoughtful, grounded conversations', 'https://claude.ai'], ['Perplexity', 'P', '#1f8589', 'Answer engine with live sources', 'https://www.perplexity.ai'], ['Google Gemini', 'G', '#4385f5', 'Google\'s multimodal assistant', 'https://gemini.google.com'], ['Microsoft Copilot', 'C', '#1679cc', 'Everyday AI companion', 'https://copilot.microsoft.com'], ['Grok', 'G', '#222222', 'Curious answers, in real time', 'https://grok.com'], ['Mistral Le Chat', 'M', '#ed7044', 'Fast and private European AI', 'https://chat.mistral.ai'], ['Qwen', 'Q', '#6a5de7', 'Alibaba Cloud large language model', 'https://chat.qwen.ai'], ['Duck.ai', 'D', '#df6a34', 'Private AI chat by DuckDuckGo', 'https://duck.ai'], ['Jan.ai', 'J', '#222b43', 'Run AI locally and privately', 'https://jan.ai'], ['AnythingLLM', 'A', '#7549e6', 'Your documents, your assistant', 'https://anythingllm.com'], ['ChatSonic', 'CS', '#0067f0', 'Creative AI for content work', 'https://writesonic.com/chat'], ['YouChat', 'Y', '#e0524e', 'Search and chat together', 'https://you.com'], ['Bloom', 'B', '#d65098', 'Open multilingual language model', 'https://huggingface.co/bigscience/bloom'], ['Genspark', 'GS', '#f35c47', 'AI search and workspace', 'https://www.genspark.ai'], ['Sider', 'S', '#7059ee', 'AI assistant across the web', 'https://sider.ai'], ['Chatly', 'CH', '#e9876a', 'Conversational AI companion', 'https://chatlyai.app'], ['Omni AI', 'O', '#19334d', 'A flexible AI toolkit', 'https://omni.ai'], ['DeepAI', 'DA', '#5f8cec', 'Simple browser-based AI chat', 'https://deepai.org/chat/chatgpt-alternative']
+      ];
+      const prompts = ['Map out a product launch', 'Explain a hard concept', 'Help me write better', 'Compare two ideas'];
+      let selected = platforms[0];
+      const providers = document.querySelector('#providers'); const thread = document.querySelector('#thread');
+      function logoMarkup(name, initials, url) { const domain = new URL(url).hostname; return `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="${name} logo" onerror="this.remove();this.nextElementSibling.classList.add('visible')"><span class="logo-fallback">${initials}</span>`; }
+      function renderProviders(filter = '') { providers.innerHTML = ''; platforms.filter(([name]) => name.toLowerCase().includes(filter.toLowerCase())).forEach(platform => { const [name, initials, color, , url] = platform; const button = document.createElement('button'); button.className = `provider ${name === selected[0] ? 'active' : ''}`; button.innerHTML = `<span class="provider-icon" style="background:${color}">${logoMarkup(name, initials, url)}</span>${name}`; button.onclick = () => selectPlatform(platform); providers.append(button); }); document.querySelector('#platformCount').textContent = `${platforms.length}`; }
+      function selectPlatform(platform) { selected = platform; const [name, initials, color, tagline, url] = platform; document.querySelector('#providerName').textContent = name; document.querySelector('#crumbName').textContent = name; document.querySelector('#providerTagline').textContent = tagline; document.querySelector('#messageInput').placeholder = `Message ${name}...`; document.querySelector('#openProvider').href = url; ['#largeIcon', '#assistantAvatar'].forEach(id => { const el = document.querySelector(id); el.innerHTML = logoMarkup(name, initials, url); el.style.background = color; }); document.querySelector('#assistantName').textContent = name; renderProviders(document.querySelector('#platformSearch').value); }
+      function addMessage(text, role) { const article = document.createElement('article'); article.className = `message ${role}`; const avatar = role === 'user' ? 'you' : logoMarkup(selected[0], selected[1], selected[4]); const style = role === 'assistant' ? `style="background:${selected[2]}"` : ''; article.innerHTML = `<div class="avatar" ${style}>${avatar}</div><div class="bubble">${role === 'assistant' ? `<strong>${selected[0]}</strong>` : ''}${text}</div>`; thread.append(article); article.scrollIntoView({ behavior: 'smooth', block: 'end' }); }
+      document.querySelector('#platformSearch').addEventListener('input', event => renderProviders(event.target.value));
+      document.querySelector('#suggestions').innerHTML = prompts.map(prompt => `<button class="suggestion">${prompt}</button>`).join('');
+      document.querySelectorAll('.suggestion').forEach(button => button.onclick = () => { document.querySelector('#messageInput').value = button.textContent; document.querySelector('#chatForm').requestSubmit(); });
+      document.querySelector('#chatForm').addEventListener('submit', event => { event.preventDefault(); const input = document.querySelector('#messageInput'); const text = input.value.trim(); if (!text) return; addMessage(text, 'user'); input.value = ''; window.setTimeout(() => addMessage(`I’m ready to help with that. You are chatting with ${selected[0]} in this unified demo interface; open the original service above when you need its live model.`, 'assistant'), 450); });
+      document.querySelector('#newChat').onclick = () => { thread.innerHTML = ''; document.querySelector('#messageInput').focus(); };
+      renderProviders(); selectPlatform(selected); lucide.createIcons();
+    </script>
+  </body>
+</html>
