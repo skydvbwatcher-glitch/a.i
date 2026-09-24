@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unified AI Chat Hub</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 1.5rem;
+        background: #111827;
+        color: #f3f4f6;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 0.75rem;
+      }
+
+      p {
+        margin: 0.25rem 0 0.75rem;
+      }
+
+      .section {
+        margin-bottom: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .card {
+        background: #1f2937;
+        border: 1px solid #374151;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #93c5fd;
+      }
+
+      .embed-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      }
+
+      iframe {
+        width: 100%;
+        height: 340px;
+        border: 1px solid #374151;
+        border-radius: 10px;
+        background: #0b1220;
+      }
+
+      .small {
+        color: #d1d5db;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Unified AI Chat Hub</h1>
+    <p>
+      Open popular AI assistants from one page. Use the embedded panes when supported, or open
+      each service in a new tab.
+    </p>
+
+    <section class="section">
+      <h2>Multi-Chat Workspace</h2>
+      <p class="small">
+        Some platforms block iframe embedding for security. If a pane does not load, use the
+        direct link below it.
+      </p>
+      <div class="embed-grid">
+        <div>
+          <iframe src="https://chat.openai.com" title="ChatGPT"></iframe>
+          <p><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">Open ChatGPT</a></p>
+        </div>
+        <div>
+          <iframe src="https://claude.ai" title="Claude AI"></iframe>
+          <p><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Open Claude AI</a></p>
+        </div>
+        <div>
+          <iframe src="https://gemini.google.com" title="Google Gemini"></iframe>
+          <p><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Open Google Gemini</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Core Chat Platforms</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>ChatGPT (OpenAI)</h3>
+          <p>Industry pioneer for writing, multimodal interactions, and voice chat.</p>
+          <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Claude AI (Anthropic)</h3>
+          <p>Advanced reasoning, programming help, and nuanced human-like writing.</p>
+          <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Google Gemini</h3>
+          <p>Google Workspace integration and live Google Search features.</p>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>DeepSeek Chat</h3>
+          <p>Efficient reasoning for logic, math, and coding tasks.</p>
+          <a href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Le Chat (Mistral AI)</h3>
+          <p>Fast multilingual interface with web search.</p>
+          <a href="https://chat.mistral.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Search & Productivity Platforms</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Perplexity AI</h3>
+          <p>Conversational search engine with real-time source citations.</p>
+          <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Microsoft Copilot</h3>
+          <p>Web answers and Microsoft ecosystem integrations.</p>
+          <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Grok (xAI)</h3>
+          <p>Real-time social/news context through X integration.</p>
+          <a href="https://grok.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Notion AI</h3>
+          <p>Workspace-native assistant for surfacing knowledge and editing pages.</p>
+          <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>All-in-One Model Aggregators</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>All Chatbots AI</h3>
+          <p>Cross-model access to ChatGPT, Claude, and Gemini in one layout.</p>
+          <a href="https://www.allchatbots.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>MindStudio</h3>
+          <p>Switch dynamically between foundational models from one dashboard.</p>
+          <a href="https://www.mindstudio.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>DeepAI Chat</h3>
+          <p>Minimal chat interface with text generation and file uploads.</p>
+          <a href="https://deepai.org/chat" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Roleplay & Entertainment AI Characters</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Character.ai</h3>
+          <p>Chat with user-created fictional, historical, or celebrity personas.</p>
+          <a href="https://character.ai" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+        <article class="card">
+          <h3>Janitor AI</h3>
+          <p>Interactive roleplay scenarios and customizable AI characters.</p>
+          <a href="https://janitorai.com" target="_blank" rel="noopener noreferrer">Open</a>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
